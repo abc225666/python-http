@@ -56,7 +56,7 @@ pipeline {
           }
           container('python') {
             sh "python -m unittest"
-            withCredential([file('credentialsId': 'labelhub-backend-staging-env', variable: 'envfile')]) {
+            withCredentials([file('credentialsId': 'labelhub-backend-staging-env', variable: 'envfile')]) {
               sh 'cp $envfile ./.env'
               sh 'cat .env'
             }
