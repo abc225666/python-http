@@ -56,6 +56,11 @@ pipeline {
           }
           container('python') {
             sh "python -m unittest"
+            withCredential([file('credentialsId': 'labelhub-backend-staging-env', variable: 'envfile')]) {
+              sh 'cp $envfile ./.env'
+              sh 'cat .env'
+            }
+
 
             sh 'export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml'
 
