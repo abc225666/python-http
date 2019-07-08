@@ -5,4 +5,4 @@ steps:
 - name: yee
   image: alpine:3.9
   commands:
-  - echo yeee
+  - echo yeee2
